@@ -17,14 +17,14 @@ export default function Sidebar() {
       </div>
 
       <div className="sidebar-bottom">
-        <SidebarOption icon={<Home />} title="Home" />
-        <SidebarOption icon={<Tag />} title="Explore" />
-        <SidebarOption icon={<NotificationsNone />} title="Notifications" />
-        <SidebarOption icon={<MailOutline />} title="Messages" />
-        <SidebarOption icon={<BookmarkBorder />} title="Bookmarks" />
-        <SidebarOption icon={<ListAlt />} title="Lists" />
-        <SidebarOption icon={<PermIdentity />} title="Profile" />
-        <SidebarOption icon={<ExitToApp />} title="Sign Out" />
+        <SidebarOption icon={<Home />} onClick={undefined} title="Home" />
+        <SidebarOption icon={<Tag />} onClick={undefined} title="Explore" />
+        <SidebarOption icon={<NotificationsNone />} onClick={undefined} title="Notifications" />
+        <SidebarOption icon={<MailOutline />} onClick={undefined} title="Messages" />
+        <SidebarOption icon={<BookmarkBorder />} onClick={undefined} title="Bookmarks" />
+        <SidebarOption icon={<ListAlt />} onClick={undefined} title="Lists" />
+        <SidebarOption icon={<PermIdentity />} onClick={undefined} title="Profile" />
+        <SidebarOption icon={<ExitToApp />} onClick={undefined} title="Sign Out" />
       </div>
 
     </div>
