@@ -10,10 +10,14 @@ export default function Sidebar() {
 
       <div className="sidebar-top">
         <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
-        <Avatar className='sidebar-avatar' />
-        <h2>Name</h2>
-        <h4>@username</h4>
-        <MoreHoriz />
+        <div className="sidebar-profile">
+          <Avatar className='sidebar-avatar' />
+          <div className="sidebar-profile-name">
+            <h2>Name</h2>
+            <h4>@username</h4>
+          </div>
+          <MoreHoriz style={{ cursor: "pointer" }} />
+        </div>
       </div>
 
       <div className="sidebar-bottom">
@@ -28,5 +32,5 @@ export default function Sidebar() {
       </div>
 
     </div>
-  )
+  );
 }

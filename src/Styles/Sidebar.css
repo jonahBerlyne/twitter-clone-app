@@ -1,3 +1,22 @@
+.sidebar {
+ display: flex;
+ flex-direction: column;
+ margin-top: 15px;
+ margin-left: 115px;
+}
+
+.sidebar-profile {
+ display: flex;
+ gap: 10px;
+ margin-top: 10px;
+ margin-bottom: 20px;
+}
+
+.sidebar-profile-name {
+ display: flex;
+ flex-direction: column;
+}
+
 .sidebar-top > img {
  object-fit: contain;
  height: 40px;
@@ -6,6 +25,9 @@
 .sidebar-option {
  display: flex;
  align-items: center;
- gap: 10px;
+ gap: 15px;
  margin-bottom: 20px;
+ cursor: pointer;
+ font-family: "Hind", sans-serif;
+ font-size: 20px;
 }
