@@ -13,10 +13,18 @@ export default function Sidebar() {
         <Avatar className='sidebar-avatar' />
         <h2>Name</h2>
         <h4>@username</h4>
+        <MoreHoriz />
       </div>
 
       <div className="sidebar-bottom">
         <SidebarOption icon={<Home />} title="Home" />
+        <SidebarOption icon={<Tag />} title="Explore" />
+        <SidebarOption icon={<NotificationsNone />} title="Notifications" />
+        <SidebarOption icon={<MailOutline />} title="Messages" />
+        <SidebarOption icon={<BookmarkBorder />} title="Bookmarks" />
+        <SidebarOption icon={<ListAlt />} title="Lists" />
+        <SidebarOption icon={<PermIdentity />} title="Profile" />
+        <SidebarOption icon={<ExitToApp />} title="Sign Out" />
       </div>
 
     </div>
