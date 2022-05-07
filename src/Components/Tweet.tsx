@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "../Styles/Tweet.css";
 import { Avatar } from "@mui/material";
 import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined } from "@mui/icons-material";
@@ -11,6 +11,7 @@ interface TweetInterface {
 };
 
 export default function Tweet({ name, photoUrl, tweet, username }: TweetInterface) {
+
   return (
     <div className='tweet'>
 
