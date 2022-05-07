@@ -1,6 +1,8 @@
 import React from 'react';
-import "../Styles/Sidebar.css";
+import "../../Styles/Sidebar.css";
 import { Avatar } from "@mui/material";
+import SidebarOption from './SidebarOption';
+import { MoreHoriz, Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
 
 export default function Sidebar() {
   return (
@@ -12,7 +14,11 @@ export default function Sidebar() {
         <h2>Name</h2>
         <h4>@username</h4>
       </div>
-      
+
+      <div className="sidebar-bottom">
+        <SidebarOption icon={<Home />} title="Home" />
+      </div>
+
     </div>
   )
 }
