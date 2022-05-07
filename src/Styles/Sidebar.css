@@ -7,14 +7,26 @@
 
 .sidebar-profile {
  display: flex;
- gap: 10px;
  margin-top: 10px;
- margin-bottom: 20px;
+ margin-bottom: 10px;
 }
 
 .sidebar-profile-name {
  display: flex;
  flex-direction: column;
+ font-size: 15px;
+ margin-left: 10px;
+ margin-right: 10px;
+}
+
+.name-display {
+ margin-bottom: 0;
+ font-weight: bold;
+}
+
+.username-display {
+ margin-top: -5px;
+ opacity: 0.7;
 }
 
 .sidebar-top > img {
@@ -28,7 +40,11 @@
  gap: 15px;
  font-family: "Hind", sans-serif;
  font-size: 20px;
- padding: 10px 20px 15px 0px;
+ /* padding: 10px 20px 15px 0px; */
+}
+
+.sidebar-option > p {
+ margin-top: 20px;
 }
 
 .sidebar-option:hover {
@@ -36,6 +52,6 @@
  cursor: pointer;
  border: none;
  border-radius: 16px;
- margin-right: 87%;
+ margin-right: 20%;
  padding-left: 10px;
 }

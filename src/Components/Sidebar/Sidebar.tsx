@@ -13,10 +13,10 @@ export default function Sidebar() {
         <div className="sidebar-profile">
           <Avatar className='sidebar-avatar' />
           <div className="sidebar-profile-name">
-            <h2>Name</h2>
-            <h4>@username</h4>
+            <p className='name-display'>Name</p>
+            <p className="username-display">@username</p>
           </div>
-          <MoreHoriz style={{ cursor: "pointer" }} />
+          <MoreHoriz style={{ cursor: "pointer", marginTop: "-2px" }} />
         </div>
       </div>
 
