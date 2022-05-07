@@ -13,6 +13,11 @@ export default function Feed() {
   const [tweet, setTweet] = useState<string>("");
   const [username, setUsername] = useState<string>("");
 
+  const sendTweet = (e: any): void => {
+    e.preventDefault();
+    console.log("sent");
+  }
+
   return (
     <div className="feed">
 
@@ -23,12 +28,10 @@ export default function Feed() {
           <Avatar style={{ height: "50px", width: "50px" }} />
           <form>
             <input type="text" placeholder="What's happening?" />
-            <button type="submit" className="btn btn-primary tweet-btn">Tweet</button>
+            <button type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet}>Tweet</button>
           </form>
         </div>
       </div>
-
-      <Tweet name="Name" photoUrl='' tweet="This is a test tweet." username="username" />
 
       {tweets.map(_tweet => {
         return (
