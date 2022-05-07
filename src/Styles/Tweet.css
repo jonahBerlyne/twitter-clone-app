@@ -12,10 +12,9 @@
 
 .tweet-info {
  margin-left: 10px;
- margin-top: 5px;
  font-size: 15px;
  display: flex;
- gap: 3px;
+ gap: 5px;
 }
 
 .tweet-info-name {
@@ -29,4 +28,25 @@
 .tweet-body {
  overflow-wrap: anywhere;
  font-size: 15px;
+}
+
+.tweet-btns {
+ display: flex;
+ gap: 25%;
+ opacity: 0.7;
+}
+
+.reply-btn:hover {
+ color: #2bc2f4;
+ cursor: pointer;
+}
+
+.retweet-btn:hover {
+ color: #1dfe1d;
+ cursor: pointer;
+}
+
+.like-btn:hover {
+ color: #ff133a;
+ cursor: pointer;
 }

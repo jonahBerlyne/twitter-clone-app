@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Styles/Tweet.css";
 import { Avatar } from "@mui/material";
+import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined } from "@mui/icons-material";
 
 interface TweetInterface {
   name: string;
@@ -23,6 +24,18 @@ export default function Tweet({ name, photoUrl, tweet, username }: TweetInterfac
 
       <div className="tweet-body">
         <p>{tweet}</p>
+      </div>
+
+      <div className="tweet-btns">
+        <div className="reply-btn">
+          <ModeCommentOutlined />
+        </div>
+        <div className="retweet-btn">
+          <Repeat />
+        </div>
+        <div className="like-btn">
+          <FavoriteBorderOutlined />
+        </div>
       </div>
 
     </div>
