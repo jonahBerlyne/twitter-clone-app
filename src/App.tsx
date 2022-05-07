@@ -1,9 +1,10 @@
 import React from 'react';
+import HomePage from './Pages/HomePage';
 
 export default function App() {
   return (
     <div className="App">
-      All of the boilerplate has been removed.
+      <HomePage />
     </div>
   );
 }
