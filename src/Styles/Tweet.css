@@ -1,0 +1,32 @@
+.tweet {
+ padding: 15px;
+ margin-bottom: 10px;
+ margin-left: 10px;
+ border: 1px solid lightgray;
+}
+
+.tweet-header {
+ display: flex;
+ margin-bottom: 10px;
+}
+
+.tweet-info {
+ margin-left: 10px;
+ margin-top: 5px;
+ font-size: 15px;
+ display: flex;
+ gap: 3px;
+}
+
+.tweet-info-name {
+ font-weight: bold;
+}
+
+.tweet-info-username {
+ opacity: 0.7;
+}
+
+.tweet-body {
+ overflow-wrap: anywhere;
+ font-size: 15px;
+}
