@@ -1,0 +1,4 @@
+.sidebar-top > img {
+ object-fit: contain;
+ height: 40px;
+}

@@ -4,10 +4,11 @@ import Sidebar from '../Components/Sidebar';
 
 export default function HomePage() {
   return (
-    <div className='Home'>
-      HomePage
+    <div className='home'>
       {/* Sidebar */}
-      <Sidebar />
+      <div className="app-body">
+        <Sidebar />
+      </div>
       {/* Feed */}
       {/* Trends */}
       {/* Widgets */}
