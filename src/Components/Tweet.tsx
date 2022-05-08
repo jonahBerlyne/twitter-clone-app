@@ -4,16 +4,17 @@ import { Avatar } from "@mui/material";
 import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined } from "@mui/icons-material";
 
 interface TweetInterface {
+  id: any;
   name: string;
   photoUrl: string;
   tweet: string;
   username: string;
 };
 
-export default function Tweet({ name, photoUrl, tweet, username }: TweetInterface) {
+export default function Tweet({ id, name, photoUrl, tweet, username }: TweetInterface) {
 
   return (
-    <div className='tweet'>
+    <div className='tweet' key={id}>
 
       <div className="tweet-header">
         <Avatar />
