@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../Styles/Auth.css";
 import { Form, FloatingLabel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
 
@@ -20,6 +21,10 @@ export default function LoginPage() {
         </FloatingLabel>
       </>
       <button className='btn btn-dark auth-btn' type="submit">Login</button>
+      <div className="auth-link-container">
+        <p className='account-question'>Don't have an account?</p>
+        <Link to="/register" className="auth-link">Sign up</Link>
+      </div>
     </div>
   );
 }

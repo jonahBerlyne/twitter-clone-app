@@ -33,3 +33,16 @@ input:focus + label {
  font-weight: bold;
  margin-top: 5px;
 }
+
+.auth-link-container {
+ display: flex;
+ gap: 1px;
+}
+
+.account-question {
+ color: gray;
+}
+
+.auth-link {
+ color: #2bc2f4;
+}
