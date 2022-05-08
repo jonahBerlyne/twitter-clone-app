@@ -53,3 +53,17 @@ input:focus + label {
  color: #2bc2f4;
  text-decoration: underline;
 }
+
+.username-container {
+ display: flex;
+ align-items: center;
+}
+
+.username-at {
+ border: none;
+ background-color: rgb(229, 229, 229);
+ padding: 0px 15px 0px 15px;
+ font-size: 40px;
+ font-weight: bold;
+ height: 58px;
+}

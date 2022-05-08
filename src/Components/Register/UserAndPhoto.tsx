@@ -13,9 +13,12 @@ export default function UserAndPhoto({ username, setUsername, showSignUp }: User
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
       <p className="auth-header">Get Started</p>
       <>
-        <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
-          <Form.Control type="text" placeholder="Username" className="auth-input" value={username} onChange={e => setUsername(e.target.value)} required />
-        </FloatingLabel>
+        <div className="username-container">
+          <p className="username-at">@</p>
+          <FloatingLabel controlId="floatingInput" label="username" className="mb-3">
+            <Form.Control type="text" placeholder="username" className="auth-input" value={username} onChange={e => setUsername(e.target.value)} required />
+          </FloatingLabel>
+        </div>
       </>
       <button className='btn btn-dark auth-btn' type="button" onClick={() => showSignUp()}>Go back</button>
     </div>
