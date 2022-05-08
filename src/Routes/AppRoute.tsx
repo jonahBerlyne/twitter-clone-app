@@ -26,11 +26,7 @@ export default function AppRoute ({children}: {children: any}) {
  if (pending) return null;
 
  if (currentUser) {
-  return (
-    <div>
-      {children}
-    </div>
-  );
+  return children;
  } else {
    return <Navigate to="/login" />;
  }
