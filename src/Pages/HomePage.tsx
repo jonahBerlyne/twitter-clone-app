@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 import { RootState } from '../Redux/store';
 
 export default function HomePage() {
-
-  const user = useSelector((state: RootState) => state.user.user);
-  
   return (
     <div className='home'>
       <div className="app-body">
@@ -20,5 +17,5 @@ export default function HomePage() {
         {/* Widgets */}
       </div>
     </div>
-  )
+  );
 }

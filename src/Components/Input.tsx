@@ -1,8 +1,17 @@
 import React from 'react';
 import "../Styles/Input.css";
 
-export default function Input() {
+interface InputInterface {
+  onChange: (e: any) => void;
+  placeholder: string;
+  type: string;
+  value: string;
+};
+
+export default function Input({ onChange, placeholder, type, value }: InputInterface) {
   return (
-    <div>Input</div>
+    <div className='input'>
+      <input type={type} placeholder={placeholder} value={value} onChange={onChange} />
+    </div>
   )
 }
