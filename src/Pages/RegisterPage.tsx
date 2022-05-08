@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../Styles/Auth.css";
-import { Form, FloatingLabel } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import SignUp from '../Components/Register/SignUp';
+import UserAndPhoto from '../Components/Register/UserAndPhoto';
 
 export default function RegisterPage() {
 
@@ -26,5 +26,13 @@ export default function RegisterPage() {
     setSignUpIsShown(true);
   }
 
-  
+  const signUpProps = { name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword, showUserAndPhoto };
+  const userAndPhotoProps = { username, setUsername, showSignUp };
+
+  return (
+    <>
+      {signUpIsShown && <SignUp {...signUpProps} />}
+      {userAndPhotoIsShown && <UserAndPhoto {...userAndPhotoProps} />}
+    </>
+  );
 }

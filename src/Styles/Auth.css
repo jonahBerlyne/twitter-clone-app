@@ -26,7 +26,7 @@
 }
 
 input:focus + label {
- color: #0066ff;
+ color: #009dff;
 }
 
 .auth-btn {
@@ -36,7 +36,8 @@ input:focus + label {
 
 .auth-link-container {
  display: flex;
- gap: 1px;
+ gap: 10px;
+ margin-top: 20px;
 }
 
 .account-question {
@@ -45,4 +46,10 @@ input:focus + label {
 
 .auth-link {
  color: #2bc2f4;
+ text-decoration: none;
+}
+
+.auth-link:hover {
+ color: #2bc2f4;
+ text-decoration: underline;
 }

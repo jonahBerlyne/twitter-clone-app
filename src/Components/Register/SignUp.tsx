@@ -11,13 +11,14 @@ interface SignUpForm {
   setEmail: (e: any) => void;
   setPassword: (e: any) => void;
   setConfirmPassword: (e: any) => void;
+  showUserAndPhoto: () => void;
 };
 
-export default function SignUp({ name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword }: SignUpForm) {
+export default function SignUp({ name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword, showUserAndPhoto }: SignUpForm) {
   return (
     <div className="auth">
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
-      <p className="auth-header">Sign in to Twitter</p>
+      <p className="auth-header">Sign Up</p>
       <>
         <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
           <Form.Control type="text" placeholder="Name" className="auth-input" value={name} onChange={e => setName(e.target.value)} required />
@@ -32,7 +33,7 @@ export default function SignUp({ name, email, password, confirmPassword, setName
           <Form.Control type="password" placeholder="Confirm Password" className="auth-input" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
         </FloatingLabel>
       </>
-      <button className='btn btn-dark auth-btn' type="submit">Sign Up</button>
+      <button className='btn btn-dark auth-btn' type="button" onClick={() => showUserAndPhoto()}>Next</button>
       <div className="auth-link-container">
         <p className='account-question'>Have an account?</p>
         <Link to="/login" className="auth-link">Log in</Link>
