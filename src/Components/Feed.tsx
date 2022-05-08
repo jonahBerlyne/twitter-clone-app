@@ -22,13 +22,12 @@ export default function Feed() {
         snapshot.docs.forEach(doc => {
           const tweetDoc = {
             id: doc.id,
-            data: doc.data(),
+            data: doc.data()
           };
           tweetsArr.push(tweetDoc);
         });
         setTweets(tweetsArr);
       });
-      console.log("retrieved");
       return unsub;
     } catch (err) {
       alert(`Tweet retrieval error: ${err}`);
