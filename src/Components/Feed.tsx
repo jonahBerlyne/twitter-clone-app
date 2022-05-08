@@ -3,7 +3,7 @@ import "../Styles/Feed.css";
 import { Avatar } from "@mui/material";
 import Tweet from "./Tweet";
 import fireDB, { auth } from "../firebaseConfig";
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "firebase/firestore"; 
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, onSnapshot } from "firebase/firestore"; 
 
 export default function Feed() {
 
@@ -14,20 +14,22 @@ export default function Feed() {
   const [tweet, setTweet] = useState<string>("");
   const [username, setUsername] = useState<string>("");
 
-  const getTweets = async (): Promise<any> => {
+  const getTweets = () => {
     try {
       const q = query(collection(fireDB, "tweets"), orderBy("timestamp", "desc"));
-      const querySnapshot = await getDocs(q);
-      let tweetsArr: any[] = [];
-      querySnapshot.forEach(doc => {
-        const tweetDoc = {
-          id: doc.id,
-          data: doc.data(),
-        };
-        tweetsArr.push(tweetDoc);
-        console.log(tweetsArr);
+      const unsub = onSnapshot(q, snapshot => {
+        let tweetsArr: any[] = [];
+        snapshot.docs.forEach(doc => {
+          const tweetDoc = {
+            id: doc.id,
+            data: doc.data(),
+          };
+          tweetsArr.push(tweetDoc);
+        });
+        setTweets(tweetsArr);
       });
-      setTweets(tweetsArr);
+      console.log("retrieved");
+      return unsub;
     } catch (err) {
       alert(`Tweet retrieval error: ${err}`);
     }
@@ -48,8 +50,8 @@ export default function Feed() {
         tweet,
         username
       };
+      setTweet("");
       await addDoc(docRef, tweetDoc);
-      alert("Tweet sent");
     } catch (err) {
       alert(`Tweeting error: ${err}`);
     }
@@ -72,7 +74,7 @@ export default function Feed() {
 
       {tweets.map(_tweet => {
         return (
-          <Tweet id={_tweet.id} name={_tweet.data.name} photoUrl={_tweet.data.photoUrl} tweet={_tweet.data.tweet} username={_tweet.data.username} />
+          <Tweet key={_tweet.id} name={_tweet.data.name} photoUrl={_tweet.data.photoUrl} tweet={_tweet.data.tweet} username={_tweet.data.username} />
         );
       })}
 
