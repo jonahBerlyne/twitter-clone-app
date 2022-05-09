@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { useDispatch } from "react-redux";
-import { AppDispatch } from '../Redux/store';
+import { AppDispatch, store } from '../Redux/store';
 import { login } from '../Redux/userSlice';
 import { doc, getDoc } from "firebase/firestore";
 import fireDB, { auth } from "../firebaseConfig";
@@ -22,6 +22,7 @@ export default function AppRoute ({children}: {children: any}) {
          id: docSnapshot.id
        })
      );
+     console.log(store.getState().user.user);
    } catch (err) {
      alert(`User info retrieval error: ${err}`);
    }

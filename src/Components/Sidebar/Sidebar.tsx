@@ -5,8 +5,12 @@ import SidebarOption from './SidebarOption';
 import { MoreHoriz, Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
 import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../Redux/userSlice';
 
 export default function Sidebar() {
+
+  const user: any = useSelector(selectUser);
 
   const logOut = async (): Promise<any> => {
     try {
@@ -24,8 +28,8 @@ export default function Sidebar() {
         <div className="sidebar-profile">
           <Avatar className='sidebar-avatar' />
           <div className="sidebar-profile-name">
-            <p className='name-display'>Name</p>
-            <p className="username-display">@username</p>
+            <p className='name-display'>{user.name}</p>
+            <p className="username-display">@{user.username}</p>
           </div>
           <MoreHoriz style={{ cursor: "pointer", marginTop: "-2px" }} />
         </div>
