@@ -33,7 +33,7 @@ export default function SignUp({ name, email, password, confirmPassword, setName
           <Form.Control type="password" placeholder="Confirm Password" className="auth-input" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
         </FloatingLabel>
       </>
-      <button className='btn btn-dark auth-btn' type="button" onClick={() => showUserAndPhoto()}>Next</button>
+      <button className='btn btn-dark auth-btn' type="button" onClick={() => showUserAndPhoto()} disabled={name === "" || email === "" || password === "" || confirmPassword === "" || password !== confirmPassword}>Next</button>
       <div className="auth-link-container">
         <p className='account-question'>Have an account?</p>
         <Link to="/login" className="auth-link">Log in</Link>

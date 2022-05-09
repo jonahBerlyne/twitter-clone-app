@@ -66,6 +66,7 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
         className='btn btn-dark auth-btn'
         type="submit"
         onClick={register}
+        disabled={username === ""}
       >Register
       </button>
 

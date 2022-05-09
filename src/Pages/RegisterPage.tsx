@@ -43,14 +43,6 @@ export default function RegisterPage() {
   const [userAndPhotoIsShown, setUserAndPhotoIsShown] = useState<boolean>(false);
 
   const showUserAndPhoto = (): void => {
-    if (name === "" || email === "" || password === "" || confirmPassword === "") {
-      alert("Please fill in all fields before continuing.");
-      return;
-    }
-    if (password !== confirmPassword) {
-      alert("Please confirm your password before continuing.");
-      return;
-    }
     setSignUpIsShown(false);
     setUserAndPhotoIsShown(true);
   }

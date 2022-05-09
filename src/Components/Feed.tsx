@@ -66,7 +66,7 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
           <Avatar style={{ height: "50px", width: "50px" }} src={photoUrl} alt={username} />
           <form>
             <input type="text" placeholder="What's happening?" value={tweet} onChange={e => setTweet(e.target.value)}/>
-            <button type="button" className="btn btn-primary tweet-btn" onClick={sendTweet}>Tweet</button>
+            <button type="button" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
           </form>
         </div>
       </div>
