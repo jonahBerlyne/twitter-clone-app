@@ -40,7 +40,9 @@
  gap: 15px;
  font-family: "Hind", sans-serif;
  font-size: 20px;
- /* padding: 10px 20px 15px 0px; */
+ padding-left: 10px;
+ padding-right: 10px;
+ margin-left: -10px;
 }
 
 .sidebar-option > p {
@@ -50,7 +52,5 @@
 .sidebar-option:hover {
  background-color: lightgray;
  cursor: pointer;
- border: none;
  border-radius: 16px;
- padding-left: 10px;
 }
