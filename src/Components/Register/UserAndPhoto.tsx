@@ -6,35 +6,20 @@ interface UserAndPhotoForm {
  username: string;
  setUsername: (e: any) => void;
  choosePic: (e: any) => void;
+ imgFile: any;
  imgFileErr: string | null;
  imgPreview: any;
  showSignUp: () => void;
  register: () => Promise<any>;
 };
 
-export default function UserAndPhoto({ username, setUsername, choosePic, imgFileErr, imgPreview, showSignUp, register }: UserAndPhotoForm) {
+export default function UserAndPhoto({ username, setUsername, choosePic, imgFile, imgFileErr, imgPreview, showSignUp, register }: UserAndPhotoForm) {
   return (
     <div className="auth">
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
       <p className="auth-header">Get Started</p>
 
       <>
-
-        <div className="img-container">
-          <h4>Add an image (optional):</h4>
-
-          <Avatar src={imgPreview} alt={imgPreview} />
-
-          <Form.Control 
-            type="file" 
-            className="auth-img-input" 
-            onChange={choosePic} 
-          />
-
-          {imgFileErr && <h6>{imgFileErr}</h6>} 
-
-        </div>
-
         <div className="username-container">
           <p className="username-at">@</p>
 
@@ -54,21 +39,42 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
           </FloatingLabel>
         </div>
 
+        <p className='img-container-header'>Add an image (optional):</p>
+
+        <div className="img-container">
+
+          <Form.Control 
+            type="file" 
+            className="auth-img-input" 
+            onChange={choosePic}
+          />
+
+          <Avatar src={imgPreview} alt={imgPreview} style={{ height: "65px", width: "65px" }} />
+
+          {imgFileErr && <h6>{imgFileErr}</h6>} 
+
+        </div>
+
+
       </>
 
-      <button 
-        className='btn btn-dark auth-btn' type="button" 
-        onClick={() => showSignUp()}
-      >Go back
-      </button>
+      <div className="register-btns-container">
 
-      <button
-        className='btn btn-dark auth-btn'
-        type="submit"
-        onClick={register}
-        disabled={username === ""}
-      >Register
-      </button>
+        <button 
+          className='btn btn-dark auth-btn' type="button" 
+          onClick={() => showSignUp()}
+        >Go back
+        </button>
+
+        <button
+          className='btn btn-dark auth-btn'
+          type="submit"
+          onClick={register}
+          disabled={username === ""}
+        >Register
+        </button>
+
+      </div>
 
     </div>
   );

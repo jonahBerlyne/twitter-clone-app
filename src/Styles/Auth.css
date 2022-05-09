@@ -60,17 +60,27 @@ input:focus + label {
 
 .img-container {
  display: flex;
- flex-direction: column;
  align-items: center;
- margin-bottom: 40px;
+ gap: 20px;
 }
+
+.img-container-header {
+ font-size: 23px;
+ font-weight: 450;
+ margin-top: 25px;
+ margin-bottom: 15px;
+}
+
 .auth-img-input {
  margin-top: 10px;
+ width: 110px;
+ color: #00000000;
 }
 
 .username-container {
  display: flex;
  align-items: center;
+ margin-top: 15px;
 }
 
 .username-at {
@@ -80,4 +90,10 @@ input:focus + label {
  font-size: 40px;
  font-weight: bold;
  height: 58px;
+}
+
+.register-btns-container {
+ display: flex;
+ gap: 20px;
+ margin-top: 60px;
 }

@@ -53,10 +53,6 @@ export default function RegisterPage() {
   }
 
   const register = async (): Promise<any> => {
-    if (username === "") {
-      alert("Please type in a username");
-      return;
-    }
     try {
       let photoUrl: string = "/twitterEgg.jpeg";
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -86,7 +82,7 @@ export default function RegisterPage() {
 
   const signUpProps = { name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword, showUserAndPhoto };
   
-  const userAndPhotoProps = { username, setUsername, choosePic, imgFileErr, imgPreview, showSignUp, register };
+  const userAndPhotoProps = { username, setUsername, choosePic, imgFile, imgFileErr, imgPreview, showSignUp, register };
 
   return (
     <>
