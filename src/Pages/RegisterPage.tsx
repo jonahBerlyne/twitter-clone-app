@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const [username, setUsername] = useState<string>("");
   const [imgFile, setImgFile] = useState<any>(null);
   const [imgFileErr, setImgFileErr] = useState<string | null>(null);
-  const [imgPreview, setImgPreview] = useState<any>(null);
+  const [imgPreview, setImgPreview] = useState<string>("/twitterEgg.jpeg");
   const types: string[] = ['image/png', 'image/jpeg'];
 
   const choosePic = (e: any): void => {
@@ -35,7 +35,7 @@ export default function RegisterPage() {
   useEffect(() => {
    if (imgFile) setImgPreview(URL.createObjectURL(imgFile));
    return () => {
-     setImgPreview(null);
+     setImgPreview("/twitterEgg.jpeg");
    }
   }, [imgFile]);
 
@@ -66,21 +66,18 @@ export default function RegisterPage() {
       return;
     }
     try {
-      let photoUrl: string = "";
+      let photoUrl: string = "/twitterEgg.jpeg";
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("checkpoint 1");
       if (imgFile) {
         const storage = getStorage();
         const uploadTask = ref(storage, `${userCredential.user.uid}/${imgFile.name}`);
         await uploadBytes(uploadTask, imgFile);
         photoUrl = await getDownloadURL(uploadTask);
       }
-      console.log("checkpoint 2");
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photoUrl
       });
-      console.log("checkpoint 3");
       const docRef = doc(fireDB, "users", `${userCredential.user.uid}`);
       const userDoc = {
         name,
@@ -90,7 +87,6 @@ export default function RegisterPage() {
         photoUrl
       };
       await setDoc(docRef, userDoc);
-      console.log("checkpoint 4");
     } catch (err) {
       alert(`Registration error: ${err}`);
     }

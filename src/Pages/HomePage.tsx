@@ -4,13 +4,10 @@ import Sidebar from '../Components/Sidebar/Sidebar';
 import Feed from "../Components/Feed";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../Redux/userSlice';
-import { store } from '../Redux/store';
 
 export default function HomePage() {
 
   const user: any = useSelector(selectUser);
-
-  console.log(store.getState());
 
   return (
     <div className='home'>
