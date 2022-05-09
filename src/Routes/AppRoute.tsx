@@ -22,7 +22,6 @@ export default function AppRoute ({children}: {children: any}) {
          id: docSnapshot.id
        })
      );
-     console.log(store.getState().user.user);
    } catch (err) {
      alert(`User info retrieval error: ${err}`);
    }

@@ -6,14 +6,13 @@ interface UserAndPhotoForm {
  username: string;
  setUsername: (e: any) => void;
  choosePic: (e: any) => void;
- photoUrl: string;
- imgFile: any;
  imgFileErr: string | null;
+ imgPreview: any;
  showSignUp: () => void;
  register: () => Promise<any>;
 };
 
-export default function UserAndPhoto({ username, setUsername, choosePic, photoUrl, imgFile, imgFileErr, showSignUp, register }: UserAndPhotoForm) {
+export default function UserAndPhoto({ username, setUsername, choosePic, imgFileErr, imgPreview, showSignUp, register }: UserAndPhotoForm) {
   return (
     <div className="auth">
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
@@ -24,7 +23,7 @@ export default function UserAndPhoto({ username, setUsername, choosePic, photoUr
         <div className="img-container">
           <h4>Add an image (optional):</h4>
 
-          <Avatar src={photoUrl} alt={photoUrl} />
+          <Avatar src={imgPreview} alt={imgPreview} />
 
           <Form.Control 
             type="file" 

@@ -16,7 +16,7 @@ export default function Tweet({ name, photoUrl, tweet, username }: TweetInterfac
     <div className='tweet'>
 
       <div className="tweet-header">
-        <Avatar />
+        <Avatar src={photoUrl} alt={username} />
         <div className="tweet-info">
           <p className='tweet-info-name'>{name}</p>
           <p className="tweet-info-username">@{username}</p>

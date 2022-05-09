@@ -5,6 +5,8 @@ import UserAndPhoto from '../Components/Register/UserAndPhoto';
 import fireDB, { auth } from '../firebaseConfig';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, collection, setDoc } from 'firebase/firestore';
+import { ref, getStorage, uploadBytes, getDownloadURL } from 'firebase/storage'; 
+import { store } from "../Redux/store";
 
 export default function RegisterPage() {
 
@@ -14,9 +16,9 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   
   const [username, setUsername] = useState<string>("");
-  const [photoUrl, setPhotoUrl] = useState<string>("");
   const [imgFile, setImgFile] = useState<any>(null);
   const [imgFileErr, setImgFileErr] = useState<string | null>(null);
+  const [imgPreview, setImgPreview] = useState<any>(null);
   const types: string[] = ['image/png', 'image/jpeg'];
 
   const choosePic = (e: any): void => {
@@ -31,7 +33,10 @@ export default function RegisterPage() {
   }
 
   useEffect(() => {
-   if (imgFile) setPhotoUrl(URL.createObjectURL(imgFile));
+   if (imgFile) setImgPreview(URL.createObjectURL(imgFile));
+   return () => {
+     setImgPreview(null);
+   }
   }, [imgFile]);
 
   const [signUpIsShown, setSignUpIsShown] = useState<boolean>(true);
@@ -61,11 +66,21 @@ export default function RegisterPage() {
       return;
     }
     try {
+      let photoUrl: string = "";
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log("checkpoint 1");
+      if (imgFile) {
+        const storage = getStorage();
+        const uploadTask = ref(storage, `${userCredential.user.uid}/${imgFile.name}`);
+        await uploadBytes(uploadTask, imgFile);
+        photoUrl = await getDownloadURL(uploadTask);
+      }
+      console.log("checkpoint 2");
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photoUrl
       });
+      console.log("checkpoint 3");
       const docRef = doc(fireDB, "users", `${userCredential.user.uid}`);
       const userDoc = {
         name,
@@ -75,6 +90,7 @@ export default function RegisterPage() {
         photoUrl
       };
       await setDoc(docRef, userDoc);
+      console.log("checkpoint 4");
     } catch (err) {
       alert(`Registration error: ${err}`);
     }
@@ -82,7 +98,7 @@ export default function RegisterPage() {
 
   const signUpProps = { name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword, showUserAndPhoto };
   
-  const userAndPhotoProps = { username, setUsername, choosePic, photoUrl, imgFile, imgFileErr, showSignUp, register };
+  const userAndPhotoProps = { username, setUsername, choosePic, imgFileErr, imgPreview, showSignUp, register };
 
   return (
     <>

@@ -7,10 +7,9 @@ import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../Redux/userSlice';
+import { UserInfo } from "../../Pages/HomePage";
 
-export default function Sidebar() {
-
-  const user: any = useSelector(selectUser);
+export default function Sidebar({ name, photoUrl, username }: UserInfo) {
 
   const logOut = async (): Promise<any> => {
     try {
@@ -26,10 +25,10 @@ export default function Sidebar() {
       <div className="sidebar-top">
         <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
         <div className="sidebar-profile">
-          <Avatar className='sidebar-avatar' />
+          <Avatar className='sidebar-avatar' src={photoUrl} alt={username} />
           <div className="sidebar-profile-name">
-            <p className='name-display'>{user.name}</p>
-            <p className="username-display">@{user.username}</p>
+            <p className='name-display'>{name}</p>
+            <p className="username-display">@{username}</p>
           </div>
           <MoreHoriz style={{ cursor: "pointer", marginTop: "-2px" }} />
         </div>
