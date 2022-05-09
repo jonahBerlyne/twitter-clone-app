@@ -5,14 +5,18 @@ import SidebarOption from './SidebarOption';
 import { MoreHoriz, Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
 import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../Redux/userSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, store } from '../../Redux/store';
+import { selectUser, logout } from '../../Redux/userSlice';
 import { UserInfo } from "../../Pages/HomePage";
 
 export default function Sidebar({ name, photoUrl, username }: UserInfo) {
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const logOut = async (): Promise<any> => {
     try {
+      dispatch(logout());
       await signOut(auth);
     } catch (err) {
       alert(`Sign out error: ${err}`);
