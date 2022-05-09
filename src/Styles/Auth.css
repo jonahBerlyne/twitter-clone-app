@@ -25,6 +25,10 @@
  width: 300px;
 }
 
+label {
+ opacity: 0.7;
+}
+
 input:focus + label {
  color: #009dff;
 }
