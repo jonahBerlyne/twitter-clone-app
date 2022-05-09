@@ -1,9 +1,10 @@
 import React from 'react';
 import "../../Styles/Sidebar.css";
+import { Auth } from "firebase/auth";
 
 interface Option {
  icon: any;
- onClick: (() => Promise<any>) | undefined;
+ onClick: any;
  title: string;
 };
 

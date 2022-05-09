@@ -3,8 +3,19 @@ import "../../Styles/Sidebar.css";
 import { Avatar } from "@mui/material";
 import SidebarOption from './SidebarOption';
 import { MoreHoriz, Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
+import { auth } from "../../firebaseConfig";
+import { signOut } from "firebase/auth";
 
 export default function Sidebar() {
+
+  const logOut = async (): Promise<any> => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      alert(`Sign out error: ${err}`);
+    }
+  }
+
   return (
     <div className='sidebar'>
 
@@ -28,7 +39,7 @@ export default function Sidebar() {
         <SidebarOption icon={<BookmarkBorder />} onClick={undefined} title="Bookmarks" />
         <SidebarOption icon={<ListAlt />} onClick={undefined} title="Lists" />
         <SidebarOption icon={<PermIdentity />} onClick={undefined} title="Profile" />
-        <SidebarOption icon={<ExitToApp />} onClick={undefined} title="Sign Out" />
+        <SidebarOption icon={<ExitToApp />} onClick={logOut} title="Sign Out" />
       </div>
 
     </div>
