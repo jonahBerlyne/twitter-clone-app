@@ -2,11 +2,25 @@ import React, { useState, useEffect } from 'react';
 import "../Styles/Auth.css";
 import { Form, FloatingLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginPage() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const login = async (): Promise<any> => {
+    if (email === "" || password === "") {
+      alert("Please fill in all fields to log in.");
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      alert(`Login error: ${err}`);
+    }
+  }
 
   return (
     <div className="auth">
@@ -20,7 +34,7 @@ export default function LoginPage() {
           <Form.Control type="password" placeholder="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
         </FloatingLabel>
       </>
-      <button className='btn btn-dark auth-btn' type="submit">Login</button>
+      <button className='btn btn-dark auth-btn' type="submit" onClick={login}>Login</button>
       <div className="auth-link-container">
         <p className='account-question'>Don't have an account?</p>
         <Link to="/register" className="auth-link">Sign up</Link>
