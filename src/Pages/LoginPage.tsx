@@ -27,10 +27,10 @@ export default function LoginPage() {
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
       <p className="auth-header">Sign in to Twitter</p>
       <>
-        <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+        <FloatingLabel controlId="floatingEmailLogin" label="Email" className="mb-3">
           <Form.Control type="email" placeholder="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+        <FloatingLabel controlId="floatingPasswordLogin" label="Password" className="mb-3">
           <Form.Control type="password" placeholder="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
         </FloatingLabel>
       </>

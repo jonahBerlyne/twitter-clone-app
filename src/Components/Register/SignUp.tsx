@@ -20,16 +20,16 @@ export default function SignUp({ name, email, password, confirmPassword, setName
       <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
       <p className="auth-header">Sign Up</p>
       <>
-        <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
+        <FloatingLabel controlId="floatingName" label="Name" className="mb-3">
           <Form.Control type="text" placeholder="Name" className="auth-input" value={name} onChange={e => setName(e.target.value)} required />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+        <FloatingLabel controlId="floatingEmailSignUp" label="Email" className="mb-3">
           <Form.Control type="email" placeholder="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+        <FloatingLabel controlId="floatingPasswordSignUp" label="Password" className="mb-3">
           <Form.Control type="password" placeholder="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Confirm Password" className="mb-3">
+        <FloatingLabel controlId="floatingConfirmPassword" label="Confirm Password" className="mb-3">
           <Form.Control type="password" placeholder="Confirm Password" className="auth-input" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
         </FloatingLabel>
       </>

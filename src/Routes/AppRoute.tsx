@@ -11,17 +11,21 @@ export default function AppRoute ({children}: {children: any}) {
  const [pending, setPending] = useState<boolean>(true);
  const [currentUser, setCurrentUser] = useState<any>(null);
  const dispatch = useDispatch<AppDispatch>();
-
+ 
  const getUserInfo = async (user: User): Promise<any> => {
+   let storeLength = 0;
    try {
-     const docRef = doc(fireDB, "users", `${user.uid}`);
-     const docSnapshot = await getDoc(docRef);
-     dispatch(
-       login({
-         ...docSnapshot.data(),
-         id: docSnapshot.id
-       })
-     );
+     while (storeLength < 2) {
+       const docRef = doc(fireDB, "users", `${user.uid}`);
+       const docSnapshot = await getDoc(docRef);
+       dispatch(
+         login({
+           ...docSnapshot.data(),
+           id: docSnapshot.id
+         })
+       );
+       storeLength = Object.keys(store.getState().user.user).length;
+     }
    } catch (err) {
      alert(`User info retrieval error: ${err}`);
    }
