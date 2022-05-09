@@ -58,6 +58,16 @@ input:focus + label {
  text-decoration: underline;
 }
 
+.img-container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin-bottom: 40px;
+}
+.auth-img-input {
+ margin-top: 10px;
+}
+
 .username-container {
  display: flex;
  align-items: center;
