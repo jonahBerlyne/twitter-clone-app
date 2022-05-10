@@ -5,9 +5,11 @@
  margin-left: 115px;
 }
 
-.sidebar-top > img {
+.sidebar > img {
  object-fit: contain;
- height: 40px;
+ height: 38px;
+ margin-right: 120px;
+ margin-left: -5px;
 }
 
 .sidebar-option {
@@ -29,4 +31,8 @@
  background-color: lightgray;
  cursor: pointer;
  border-radius: 16px;
+}
+
+.sidebar-bottom {
+ margin-top: 20px;
 }

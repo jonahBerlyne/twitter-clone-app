@@ -26,17 +26,9 @@ export default function Sidebar() {
   return (
     <div className='sidebar'>
 
-      <div className="sidebar-top">
-        <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
-        <User 
-          name={user?.name}
-          photoUrl={user?.photoUrl}
-          showFollowBtn={false}
-          username={user?.username}
-        />
-      </div>
+      <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
 
-      <div className="sidebar-bottom">
+      <>
         <SidebarOption icon={<Home />} onClick={undefined} title="Home" />
         <SidebarOption icon={<Tag />} onClick={undefined} title="Explore" />
         <SidebarOption icon={<NotificationsNone />} onClick={undefined} title="Notifications" />
@@ -45,8 +37,16 @@ export default function Sidebar() {
         <SidebarOption icon={<ListAlt />} onClick={undefined} title="Lists" />
         <SidebarOption icon={<PermIdentity />} onClick={undefined} title="Profile" />
         <SidebarOption icon={<ExitToApp />} onClick={logOut} title="Sign Out" />
-      </div>
+      </>
 
+      <div className="sidebar-bottom">
+        <User 
+          name={user?.name}
+          photoUrl={user?.photoUrl}
+          showFollowBtn={false}
+          username={user?.username}
+        />
+      </div>
     </div>
   );
 }
