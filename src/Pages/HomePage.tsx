@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../Styles/Home.css";
 import Sidebar from '../Components/Sidebar/Sidebar';
 import Feed from "../Components/Feed";
-import Trends from "../Components/Trends";
+import Widgets from "../Components/Widgets";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../Redux/userSlice';
 
@@ -25,9 +25,8 @@ export default function HomePage() {
           photoUrl={user?.photoUrl}
           username={user?.username}
         />
-        {/* Trends */}
-        <Trends />
         {/* Widgets */}
+        <Widgets />
       </div>
     </div>
   );
