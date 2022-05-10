@@ -1,61 +1,46 @@
 .feed {
  flex: 0.6;
  margin-left: 60px;
- margin-top: 10px;
  width: 100%;
- border: 1px solid black;
+ border-left: 1px solid gray;
+ border-right: 1px solid gray;
  padding-right: 10px;
 }
 
 .feed-header {
- margin-left: 22.5px;
-}
-
-.feed-inputContainer {
- /* padding: 10px;
- border-radius: 10px;
- margin-bottom: 10px;
- padding-right: 30px; */
- /* border: 1px solid black; */
+ margin: 13px 0px 25px 22.5px;
 }
 
 .feed-input {
- /* border: 1px solid black; */
- /* display: flex;
- padding: 20px;
- padding-right: 250px;
- width: 100%; */
  display: flex;
  margin-left: 20px;
 }
 
-.feed-input > Form {
- /* display: flex; */
-}
-
 .feed-input-box {
  color: black;
- /* border: none; */
  border: none;
  flex: 1;
  margin-top: 10px;
  margin-left: 20px;
- outline-width: 0;
  font-size: 20px;
  resize: none;
  width: 97.5%;
- /* padding: 40px; */
 }
 
-::placeholder {
- color: rgba(0, 0, 0, 0.681);
- font-weight: 100;
+textarea:focus {
+ -webkit-box-shadow: none !important;
+ -moz-box-shadow: none !important;
+ box-shadow: none !important;
+}
+
+.feed-input-box::placeholder {
+ color: #00000070;
+ font-weight: 350;
 }
 
 .tweet-btn {
  border-radius: 18px;
  font-weight: bold;
- /* margin: 10px 0px 10px 0px; */
  padding: 5px 15px 5px 15px;
 }
 

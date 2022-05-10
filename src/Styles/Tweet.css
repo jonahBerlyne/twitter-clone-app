@@ -1,8 +1,8 @@
 .tweet {
  padding: 15px;
  margin-bottom: 10px;
- margin-left: 10px;
- border: 1px solid lightgray;
+ margin-right: -10px;
+ border-top: 1px solid gray;
 }
 
 .tweet-header {
