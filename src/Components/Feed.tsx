@@ -64,10 +64,11 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
       <div className="feed-inputContainer">
         <div className="feed-input">
           <Avatar style={{ height: "50px", width: "50px" }} src={photoUrl} alt={username} />
-          <form>
-            <input type="text" placeholder="What's happening?" value={tweet} onChange={e => setTweet(e.target.value)}/>
-            <button type="button" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
-          </form>
+          {/* Convert to textarea tomorrow */}
+          <input type="text" placeholder="What's happening?" className="feed-input-box" value={tweet} onChange={e => setTweet(e.target.value)}/>
+          <div className="tweet-btn-container">
+            <button type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
+          </div>
         </div>
       </div>
 

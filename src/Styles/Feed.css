@@ -2,6 +2,8 @@
  flex: 0.6;
  margin-left: 60px;
  margin-top: 10px;
+ width: 600px;
+ /* border: 1px solid black; */
 }
 
 .feed-header {
@@ -10,26 +12,26 @@
 
 .feed-inputContainer {
  padding: 10px;
- padding-bottom: 20px;
  border-radius: 10px;
- margin-bottom: 20px;
+ margin-bottom: 10px;
+ padding-right: 30px;
+ /* border: 1px solid black; */
 }
 
 .feed-input {
- border: none;
+ /* border: 1px solid black; */
  display: flex;
- padding: 10px;
-}
-
-.feed-input > form {
- display: flex;
+ padding: 20px;
+ padding-right: 250px;
  width: 100%;
 }
 
-.feed-input > form > input {
+.feed-input-box {
  color: black;
  border: none;
+ /* border: 1px solid black; */
  flex: 1;
+ margin-top: -40px;
  margin-left: 20px;
  outline-width: 0;
  font-size: 20px;
@@ -45,4 +47,10 @@
  font-weight: bold;
  margin: 10px 0px 10px 0px;
  padding: 5px 15px 5px 15px;
+}
+
+.tweet-btn-container {
+ /* border: 1px solid black; */
+ margin-left: 200px;
+ margin-top: 40px;
 }
