@@ -27,7 +27,7 @@ export default function Sidebar() {
     <div className='sidebar'>
 
       <div className="sidebar-top">
-        <img src="/Images/Twitter/twitterIcon.jpeg" alt="Twitter Icon" />
+        <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
         <User 
           name={user?.name}
           photoUrl={user?.photoUrl}

@@ -56,19 +56,19 @@ export default function Widgets() {
         <User 
           name="McDonald's"
           photoUrl="/Images/Burgers/mcdonalds.jpeg"
-          showFollowBtn={false}
+          showFollowBtn={true}
           username="McDonalds"
         />
         <User 
           name="Burger King"
           photoUrl="/Images/Burgers/burgerKing.jpeg"
-          showFollowBtn={false}
+          showFollowBtn={true}
           username="BurgerKing"
         />
         <User 
           name="Five Guys"
           photoUrl="/Images/Burgers/fiveGuys.jpeg"
-          showFollowBtn={false}
+          showFollowBtn={true}
           username="FiveGuys"
         />
       </div>

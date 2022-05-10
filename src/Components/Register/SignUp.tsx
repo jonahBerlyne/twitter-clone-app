@@ -17,7 +17,7 @@ interface SignUpForm {
 export default function SignUp({ name, email, password, confirmPassword, setName, setEmail, setPassword, setConfirmPassword, showUserAndPhoto }: SignUpForm) {
   return (
     <div className="auth">
-      <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
+      <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
       <p className="auth-header">Sign Up</p>
       <>
         <FloatingLabel controlId="floatingName" label="Name" className="mb-3">
