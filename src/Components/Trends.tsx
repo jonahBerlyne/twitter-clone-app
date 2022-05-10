@@ -8,8 +8,8 @@ export default function Trends() {
     <div className='trends'>
 
       <div className="search-container">
-        <Search className="search-icon" />
         <input type="search" className='search' readOnly placeholder='Search Twitter' />
+        <Search className="search-icon" />
       </div>
 
     </div>
