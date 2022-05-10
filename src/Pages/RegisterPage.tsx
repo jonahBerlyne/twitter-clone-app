@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const [username, setUsername] = useState<string>("");
   const [imgFile, setImgFile] = useState<any>(null);
   const [imgFileErr, setImgFileErr] = useState<string | null>(null);
-  const [imgPreview, setImgPreview] = useState<string>("/twitterEgg.jpeg");
+  const [imgPreview, setImgPreview] = useState<string>("/Images/Twitter/twitterEgg.jpeg");
   const types: string[] = ['image/png', 'image/jpeg'];
 
   const choosePic = (e: any): void => {
@@ -35,7 +35,7 @@ export default function RegisterPage() {
   useEffect(() => {
    if (imgFile) setImgPreview(URL.createObjectURL(imgFile));
    return () => {
-     setImgPreview("/twitterEgg.jpeg");
+     setImgPreview("/Images/Twitter/twitterEgg.jpeg");
    }
   }, [imgFile]);
 
@@ -54,7 +54,7 @@ export default function RegisterPage() {
 
   const register = async (): Promise<any> => {
     try {
-      let photoUrl: string = "/twitterEgg.jpeg";
+      let photoUrl: string = "/Images/Twitter/twitterEgg.jpeg";
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       if (imgFile) {
         const storage = getStorage();

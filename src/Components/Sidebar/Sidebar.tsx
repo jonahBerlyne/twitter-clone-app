@@ -1,17 +1,17 @@
 import React from 'react';
 import "../../Styles/Sidebar.css";
-import { Avatar } from "@mui/material";
 import SidebarOption from './SidebarOption';
-import { MoreHoriz, Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
+import { Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
 import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, store } from '../../Redux/store';
 import { selectUser, logout } from '../../Redux/userSlice';
-import { UserInfo } from "../../Pages/HomePage";
+import User from "../User";
 
-export default function Sidebar({ name, photoUrl, username }: UserInfo) {
+export default function Sidebar() {
 
+  const user: any = useSelector(selectUser);
   const dispatch = useDispatch<AppDispatch>();
 
   const logOut = async (): Promise<any> => {
@@ -27,15 +27,13 @@ export default function Sidebar({ name, photoUrl, username }: UserInfo) {
     <div className='sidebar'>
 
       <div className="sidebar-top">
-        <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
-        <div className="sidebar-profile">
-          <Avatar className='sidebar-avatar' src={photoUrl} alt={username} />
-          <div className="sidebar-profile-name">
-            <p className='name-display'>{name}</p>
-            <p className="username-display">@{username}</p>
-          </div>
-          <MoreHoriz style={{ cursor: "pointer", marginTop: "-2px" }} />
-        </div>
+        <img src="/Images/Twitter/twitterIcon.jpeg" alt="Twitter Icon" />
+        <User 
+          name={user?.name}
+          photoUrl={user?.photoUrl}
+          showFollowBtn={false}
+          username={user?.username}
+        />
       </div>
 
       <div className="sidebar-bottom">

@@ -1,10 +1,11 @@
 import React from 'react';
 import "../Styles/Widgets.css";
-import { TextField, InputAdornment } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import Trend from "./Trend";
+import User from "./User";
 
 export default function Widgets() {
+
   return (
     <div className='widgets'>
 
@@ -14,12 +15,12 @@ export default function Widgets() {
       </div>
 
       <div className="trends-container">
-        <p className="trends-header">What's happening</p>
+        <p className="widget-header">What's happening</p>
         <Trend 
           trendTopic="Only on Twitter" trendRelevance="Trending" trending="#weekendvibe" 
           trendBody='Join the conversation to get your morning started in the right way.'
           trendFooter='25.8K Tweets'
-          trendPhotoUrl='/sunRising.jpeg' 
+          trendPhotoUrl='/Images/Trending/sunRising.jpeg' 
         />
         <Trend 
           trendTopic="Sports"
@@ -40,13 +41,35 @@ export default function Widgets() {
           trendBody="BTS unveils the tracklist for the third CD of their upcoming anthology album Proof"
           trendingWith1="STILL WITH You"
           trendingWith2="#PROOF_TRACKLIST3"
-          trendPhotoUrl='/btsAlbum.jpeg'
+          trendPhotoUrl='/Images/Trending/btsAlbum.jpeg'
         />
         <Trend 
           trendTopic="Science"
           trendRelevance='Trending'
           trending="Andromeda Galaxy"
           trendFooter="8,736 Tweets"
+        />
+      </div>
+
+      <div className="follow-container">
+        <p className="widget-header">Who to follow</p>
+        <User 
+          name="McDonald's"
+          photoUrl="/Images/Burgers/mcdonalds.jpeg"
+          showFollowBtn={false}
+          username="McDonalds"
+        />
+        <User 
+          name="Burger King"
+          photoUrl="/Images/Burgers/burgerKing.jpeg"
+          showFollowBtn={false}
+          username="BurgerKing"
+        />
+        <User 
+          name="Five Guys"
+          photoUrl="/Images/Burgers/fiveGuys.jpeg"
+          showFollowBtn={false}
+          username="FiveGuys"
         />
       </div>
 

@@ -14,11 +14,7 @@ export default function HomePage() {
     <div className='home'>
       <div className="app-body">
         {/* Sidebar */}
-        <Sidebar 
-          name={user?.name}
-          photoUrl={user?.photoUrl}
-          username={user?.username}
-        />
+        <Sidebar />
         {/* Feed */}
         <Feed 
           name={user?.name}
@@ -35,5 +31,6 @@ export default function HomePage() {
 export interface UserInfo {
   name: string;
   photoUrl: string;
+  showFollowBtn?: boolean;
   username: string;
 };

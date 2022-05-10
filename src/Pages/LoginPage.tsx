@@ -24,7 +24,7 @@ export default function LoginPage() {
 
   return (
     <div className="auth">
-      <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
+      <img src="/Images/Twitter/twitterIcon.jpeg" alt="Twitter Icon" />
       <p className="auth-header">Sign in to Twitter</p>
       <>
         <FloatingLabel controlId="floatingEmailLogin" label="Email" className="mb-3">
