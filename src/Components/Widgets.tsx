@@ -73,6 +73,13 @@ export default function Widgets() {
         />
       </div>
 
+      <div className="terms-container">
+        <p><a href="#" className="terms-link">Terms of Service</a> <a href="#" className="terms-link">Privacy Policy</a> <a href="#" className="terms-link">Cookie Policy</a></p>
+
+        <p><a href="#" className="terms-link">Accessibility</a> <a href="#" className="terms-link">Ads info</a> <a href="#" className="terms-link">More</a></p>
+        <p className="twitter-inc">© 2022 Twitter, Inc.</p>
+      </div>
+
     </div>
   );
 }

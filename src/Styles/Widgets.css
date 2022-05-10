@@ -1,7 +1,6 @@
 .widgets {
  margin-top: 5px;
- margin-left: 10px;
- border: 1px solid black;
+ margin-left: 5px;
 }
 
 .search-container {
@@ -33,7 +32,6 @@
 .trends-container {
  display: flex;
  flex-direction: column;
- border: 1px solid black;
  background-color: #ecebeb;
  border-radius: 16px;
  padding: 15px;
@@ -49,8 +47,33 @@
 .follow-container {
  display: flex;
  flex-direction: column;
- border: 1px solid black;
  background-color: #ecebeb;
  border-radius: 16px;
  padding: 15px;
+}
+
+.terms-container {
+ display: flex;
+ flex-direction: column;
+ margin-left: 15px;
+ margin-top: 15px;
+}
+
+.terms-container > p {
+ display: flex;
+ gap: 10px;
+ margin-bottom: 5px;
+}
+
+.terms-link,
+.twitter-inc {
+ color: #000;
+ opacity: 0.5;
+ font-size: 14px;
+ text-decoration: none;
+}
+
+.terms-link:hover {
+ color: #000;
+ text-decoration: underline;
 }
