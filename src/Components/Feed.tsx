@@ -73,6 +73,7 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
             <button type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
           </Form>
         </div>
+        <div className="feed-border"></div>
       </div>
 
       {tweets.map(_tweet => {

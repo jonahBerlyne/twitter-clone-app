@@ -13,9 +13,7 @@
 
 .feed-input {
  display: flex;
- margin-left: 0px;
- border-bottom: 1px solid gray;
- margin-right: -10px;
+ margin-left: 20px;
 }
 
 .feed-input-box {
@@ -49,4 +47,9 @@ textarea:focus {
 .feed-input > Form > button {
  margin-left: 520px;
  margin-bottom: 25px;
+}
+
+.feed-border {
+ border-top: 1px solid gray;
+ margin-right: -10px;
 }
