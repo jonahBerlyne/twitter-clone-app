@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import "../Styles/Tweet.css";
 import { Avatar } from "@mui/material";
-import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined } from "@mui/icons-material";
+import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined, DeleteOutlined } from "@mui/icons-material";
+import { doc, deleteDoc } from "firebase/firestore";
+import fireDB, { auth } from "../firebaseConfig";
 
 interface TweetInterface {
   name: string;
   photoUrl: string;
   tweet: string;
+  tweetId: string;
+  uid: string;
   username: string;
 };
 
-export default function Tweet({ name, photoUrl, tweet, username }: TweetInterface) {
+export default function Tweet({ name, photoUrl, tweet, tweetId, uid, username }: TweetInterface) {
+
+  const deleteTweet = async (): Promise<any> => {
+    try {
+      const docRef = doc(fireDB, "tweets", `${tweetId}`);
+      await deleteDoc(docRef);
+    } catch (err) {
+      alert(`Tweet deletion error: ${err}`);
+    }
+  }
 
   return (
     <div className='tweet'>
@@ -37,6 +50,11 @@ export default function Tweet({ name, photoUrl, tweet, username }: TweetInterfac
         <div className="like-btn">
           <FavoriteBorderOutlined />
         </div>
+        {uid === auth.currentUser?.uid && 
+          <div className="delete-btn" onClick={deleteTweet}>
+            <DeleteOutlined />
+          </div>
+        }
       </div>
 
     </div>

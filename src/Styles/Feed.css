@@ -13,7 +13,9 @@
 
 .feed-input {
  display: flex;
- margin-left: 20px;
+ margin-left: 0px;
+ border-bottom: 1px solid gray;
+ margin-right: -10px;
 }
 
 .feed-input-box {

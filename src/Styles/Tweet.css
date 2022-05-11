@@ -2,7 +2,7 @@
  padding: 15px;
  margin-bottom: 10px;
  margin-right: -10px;
- border-top: 1px solid gray;
+ border-bottom: 1px solid gray;
 }
 
 .tweet-header {
@@ -47,6 +47,11 @@
 }
 
 .like-btn:hover {
+ color: #ff13cc;
+ cursor: pointer;
+}
+
+.delete-btn:hover {
  color: #ff133a;
  cursor: pointer;
 }

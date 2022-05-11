@@ -48,6 +48,7 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
         photoUrl,
         timestamp,
         tweet,
+        uid: auth.currentUser?.uid,
         username
       };
       setTweet("");
@@ -75,10 +76,13 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
       </div>
 
       {tweets.map(_tweet => {
-        return (
-          <Tweet key={_tweet.id} name={_tweet.name} photoUrl={_tweet.photoUrl} tweet={_tweet.tweet} username={_tweet.username} />
-        );
-      })}
+          return (
+            <div className={_tweet === tweets[tweets.length - 1] ? "first-tweet" : ""} key={_tweet.id}>
+              <Tweet name={_tweet.name} photoUrl={_tweet.photoUrl} tweet={_tweet.tweet} tweetId={_tweet.id} uid={_tweet.uid} username={_tweet.username} />
+            </div>
+          );
+        })
+      }
 
     </div>
   );
