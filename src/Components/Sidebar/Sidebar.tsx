@@ -16,8 +16,8 @@ export default function Sidebar() {
 
   const logOut = async (): Promise<any> => {
     try {
-      dispatch(logout());
       await signOut(auth);
+      dispatch(logout());
     } catch (err) {
       alert(`Sign out error: ${err}`);
     }
@@ -28,7 +28,7 @@ export default function Sidebar() {
 
       <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
 
-      <>
+      <div className="sidebar-options">
         <SidebarOption icon={<Home />} onClick={undefined} title="Home" />
         <SidebarOption icon={<Tag />} onClick={undefined} title="Explore" />
         <SidebarOption icon={<NotificationsNone />} onClick={undefined} title="Notifications" />
@@ -37,7 +37,7 @@ export default function Sidebar() {
         <SidebarOption icon={<ListAlt />} onClick={undefined} title="Lists" />
         <SidebarOption icon={<PermIdentity />} onClick={undefined} title="Profile" />
         <SidebarOption icon={<ExitToApp />} onClick={logOut} title="Sign Out" />
-      </>
+      </div>
 
       <div className="sidebar-bottom">
         <User 

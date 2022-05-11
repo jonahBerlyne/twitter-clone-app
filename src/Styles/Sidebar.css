@@ -1,15 +1,18 @@
 .sidebar {
  display: flex;
  flex-direction: column;
+ align-items: flex-start;
  margin-top: 15px;
- margin-left: 115px;
+ margin-left: 55px;
 }
 
 .sidebar > img {
  object-fit: contain;
  height: 38px;
- margin-right: 120px;
- margin-left: -5px;
+}
+
+.sidebar-options {
+ margin-top: 10px;
 }
 
 .sidebar-option {

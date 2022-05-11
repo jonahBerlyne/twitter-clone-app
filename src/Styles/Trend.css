@@ -2,6 +2,7 @@
  display: flex;
  margin-bottom: 20px;
  margin-right: 5px;
+ position: relative;
 }
 
 .trend-header {
@@ -26,7 +27,7 @@
  opacity: 0.7;
  position: absolute;
  right: 0;
- margin-right: 40px;
+ margin-right: 10px;
  cursor: pointer;
 }
 
@@ -47,4 +48,13 @@
 
 .trend-container > img {
  border-radius: 16px;
+ position: absolute;
+ right: 0;
+ margin-right: 8px;
+}
+
+.trend-body {
+ display: flex;
+ flex-wrap: wrap;
+ margin-right: 115px;
 }

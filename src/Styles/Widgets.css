@@ -1,6 +1,8 @@
 .widgets {
  margin-top: 5px;
- margin-left: 5px;
+ margin-left: 15px;
+ margin-right: 55px;
+ position: relative;
 }
 
 .search-container {
@@ -11,6 +13,7 @@
  opacity: 0.5;
  margin-top: -70px;
  margin-left: 10px;
+ position: sticky;
 }
 
 .search {
@@ -19,6 +22,7 @@
  background-color: #ecebeb;
  width: 400px;
  padding: 10px 0px 10px 0px;
+ position: sticky;
 }
 
 .search::placeholder {

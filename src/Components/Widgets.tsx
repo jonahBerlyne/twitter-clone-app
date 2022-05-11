@@ -38,7 +38,7 @@ export default function Widgets() {
           trendTopic="K-pop"
           trendRelevance="Trending"
           trending="BTS"
-          trendBody="BTS unveils the tracklist for the third CD of their upcoming anthology album Proof"
+          trendBody="BTS unveils the tracklist for the third CD of their upcoming anthology album Proof."
           trendingWith1="STILL WITH You"
           trendingWith2="#PROOF_TRACKLIST3"
           trendPhotoUrl='/Images/Trending/btsAlbum.jpeg'
