@@ -30,7 +30,8 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
 
             <Form.Control 
               type="text" 
-              placeholder="username" className="auth-input" 
+              placeholder="username"
+              data-testid="Username" className="auth-input" 
               value={username} 
               onChange={e => setUsername(e.target.value)} 
               required 
@@ -44,14 +45,15 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
         <div className="img-container">
 
           <Form.Control 
-            type="file" 
+            type="file"
+            data-testid="imgInput" 
             className="auth-img-input" 
             onChange={choosePic}
           />
 
           <Avatar src={imgPreview} alt={imgPreview} style={{ height: "65px", width: "65px" }} />
 
-          {imgFileErr && <h6>{imgFileErr}</h6>} 
+          {imgFileErr && <h6 data-testid="imgFileErr">{imgFileErr}</h6>} 
 
         </div>
 

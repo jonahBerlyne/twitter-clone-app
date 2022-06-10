@@ -28,16 +28,16 @@ export default function LoginPage() {
       <p className="auth-header">Sign in to Twitter</p>
       <>
         <FloatingLabel controlId="floatingEmailLogin" label="Email" className="mb-3">
-          <Form.Control type="email" placeholder="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
+          <Form.Control type="email" placeholder="Email" data-testid="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
         </FloatingLabel>
         <FloatingLabel controlId="floatingPasswordLogin" label="Password" className="mb-3">
-          <Form.Control type="password" placeholder="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
+          <Form.Control type="password" placeholder="Password" data-testid="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
         </FloatingLabel>
       </>
       <button className='btn btn-dark auth-btn' type="submit" onClick={login} disabled={email === "" || password === ""}>Login</button>
       <div className="auth-link-container">
         <p className='account-question'>Don't have an account?</p>
-        <Link to="/register" className="auth-link">Sign up</Link>
+        <Link to="/register" data-testid="register-link" className="auth-link">Sign up</Link>
       </div>
     </div>
   );
