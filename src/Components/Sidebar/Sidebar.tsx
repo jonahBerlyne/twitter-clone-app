@@ -3,7 +3,7 @@ import "../../Styles/Sidebar.css";
 import SidebarOption from './SidebarOption';
 import { Home, Tag, NotificationsNone, MailOutline, BookmarkBorder, ListAlt, PermIdentity, ExitToApp } from "@mui/icons-material";
 import { auth } from "../../firebaseConfig";
-import { signOut } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, store } from '../../Redux/store';
 import { selectUser, logout } from '../../Redux/userSlice';
