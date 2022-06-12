@@ -9,6 +9,7 @@ import { Auth, getAuth } from 'firebase/auth';
 import configureMockStore from "redux-mock-store";
 import thunk from 'redux-thunk';
 import Sidebar from "../Components/Sidebar/Sidebar";
+import Feed from "../Components/Feed";
 import Widgets from '../Components/Widgets';
 
 jest.mock("../firebaseConfig", () => {
@@ -89,7 +90,19 @@ describe("Sidebar Component", () => {
  });
 });
 
-// describe("Feed Component", () => {});
+describe("Feed Component", () => {
+
+ it("renders the feed component", () => {
+
+  const { container } = render(
+   <Router>
+    <Feed name="example" photoUrl='example.png' username='example' />
+   </Router>
+  );
+
+  expect(container).toMatchSnapshot();
+ });
+});
 
 describe("Widgets Component", () => {
 
