@@ -9,6 +9,7 @@ import { Auth, getAuth } from 'firebase/auth';
 import configureMockStore from "redux-mock-store";
 import thunk from 'redux-thunk';
 import Sidebar from "../Components/Sidebar/Sidebar";
+import Widgets from '../Components/Widgets';
 
 jest.mock("../firebaseConfig", () => {
   return {
@@ -85,5 +86,21 @@ describe("Sidebar Component", () => {
 
   expect(screen.queryByTestId("followBtn")).not.toBeInTheDocument();
   expect(screen.getByTestId("MoreHorizIcon")).toBeInTheDocument();
+ });
+});
+
+// describe("Feed Component", () => {});
+
+describe("Widgets Component", () => {
+
+ it("renders the widgets component", () => {
+
+  const { container } = render(
+   <Router>
+    <Widgets />
+   </Router>
+  );
+
+  expect(container).toMatchSnapshot();
  });
 });

@@ -16,25 +16,29 @@ export default function Widgets() {
 
       <div className="trends-container">
         <p className="widget-header">What's happening</p>
-        <Trend 
+        <Trend
+          trendId={1} 
           trendTopic="Only on Twitter" trendRelevance="Trending" trending="#weekendvibe" 
           trendBody='Join the conversation to get your morning started in the right way.'
           trendFooter='25.8K Tweets'
           trendPhotoUrl='/Images/Trending/sunRising.jpeg' 
         />
-        <Trend 
+        <Trend
+          trendId={2} 
           trendTopic="Sports"
           trendRelevance="4 hours ago"
           trending="Tom Brady"
           trendFooter='1,452 Tweets'
         />
         <Trend 
+          trendId={3}
           trendTopic="Food"
           trendRelevance='12 hours ago'
           trending="National Pizza Day"
           trendFooter="10.6K Tweets"
         />
         <Trend 
+          trendId={4}
           trendTopic="K-pop"
           trendRelevance="Trending"
           trending="BTS"
@@ -44,6 +48,7 @@ export default function Widgets() {
           trendPhotoUrl='/Images/Trending/btsAlbum.jpeg'
         />
         <Trend 
+          trendId={5}
           trendTopic="Science"
           trendRelevance='Trending'
           trending="Andromeda Galaxy"
