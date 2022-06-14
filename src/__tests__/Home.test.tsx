@@ -83,10 +83,10 @@ describe("Sidebar Component", () => {
 
   setup();
 
-  expect(screen.getByTestId("name")).toHaveTextContent("example");
-  expect(screen.getByTestId("username")).toHaveTextContent("@example");
+  expect(screen.getByTestId("name-1")).toHaveTextContent("example");
+  expect(screen.getByTestId("username-1")).toHaveTextContent("@example");
 
-  expect(screen.queryByTestId("followBtn")).not.toBeInTheDocument();
+  expect(screen.queryByTestId("followBtn-1")).not.toBeInTheDocument();
   expect(screen.getByTestId("MoreHorizIcon")).toBeInTheDocument();
  });
 });
@@ -172,7 +172,10 @@ describe("Feed Component", () => {
 
   const Tweets = () => {
 
-    const deleteTweet = (index: number) => tweets.filter(_tweet => _tweet.tweetIndex !== index);
+    const deleteTweet = (index: number): void => {
+      tweets = tweets.filter(_tweet => _tweet.tweetIndex !== index);
+    }
+
     return (
       <div>
         {tweets.map((tweet) => {
@@ -194,7 +197,7 @@ describe("Feed Component", () => {
     );
   }
 
-  render(<Tweets />);
+  const { rerender } = render(<Tweets />);
 
   expect(screen.getByTestId("name-1")).toHaveTextContent("example");
   expect(screen.getByTestId("username-0")).toHaveTextContent("@example");
@@ -202,6 +205,8 @@ describe("Feed Component", () => {
 
   fireEvent.click(screen.getByTestId("deleteBtn-0"));
   expect(tweets).toHaveLength(1);
+
+  rerender(<Tweets />);
   expect(screen.queryByTestId("tweet-0")).not.toBeInTheDocument();
  });
 });
@@ -217,5 +222,43 @@ describe("Widgets Component", () => {
   );
 
   expect(container).toMatchSnapshot();
+ });
+
+ it("displays the trend text", () => {
+  render(
+    <Router>
+      <Widgets />
+    </Router>
+  );
+
+  expect(screen.getByTestId("trendTopic-5")).toHaveTextContent("Science · Trending");
+  expect(screen.getByTestId("trending-3")).toHaveTextContent("National Pizza Day");
+  expect(screen.getByTestId("trendBody-1")).toHaveTextContent("Join the conversation to get your morning started in the right way.");
+  expect(screen.getByTestId("trendFooter-2")).toHaveTextContent("1,452 Tweets");
+  expect(screen.getByTestId("trendingWith-4")).toHaveTextContent("Trending with STILL WITH You, #PROOF_TRACKLIST3");
+ });
+
+ it("displays the suggested accounts", () => {
+  render(
+    <Router>
+      <Widgets />
+    </Router>
+  );
+
+  expect(screen.getByTestId("name-2")).toHaveTextContent("Burger King");
+  expect(screen.getByTestId("username-3")).toHaveTextContent("@FiveGuys");
+  expect(screen.getByTestId("followBtn-1")).toBeInTheDocument();
+ });
+
+ it("displays the terms text", () => {
+  render(
+    <Router>
+      <Widgets />
+    </Router>
+  );
+
+  expect(screen.getByTestId("policies")).toHaveTextContent("Terms of Service Privacy Policy Cookie Policy");
+  expect(screen.getByTestId("moreTerms")).toHaveTextContent("Accessibility Ads info More");
+  expect(screen.getByTestId("twitterInc")).toHaveTextContent("© 2022 Twitter, Inc.");
  });
 });

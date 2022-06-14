@@ -32,5 +32,6 @@ export interface UserInfo {
   name: string;
   photoUrl: string;
   showFollowBtn?: boolean;
+  testId?: number;
   username: string;
 };

@@ -62,27 +62,30 @@ export default function Widgets() {
           name="McDonald's"
           photoUrl="/Images/Burgers/mcdonalds.jpeg"
           showFollowBtn={true}
+          testId={1}
           username="McDonalds"
         />
         <User 
           name="Burger King"
           photoUrl="/Images/Burgers/burgerKing.jpeg"
           showFollowBtn={true}
+          testId={2}
           username="BurgerKing"
         />
         <User 
           name="Five Guys"
           photoUrl="/Images/Burgers/fiveGuys.jpeg"
           showFollowBtn={true}
+          testId={3}
           username="FiveGuys"
         />
       </div>
 
       <div className="terms-container">
-        <p><a href="#" className="terms-link">Terms of Service</a> <a href="#" className="terms-link">Privacy Policy</a> <a href="#" className="terms-link">Cookie Policy</a></p>
+        <p data-testid="policies"><a href="#" className="terms-link">Terms of Service</a> <a href="#" className="terms-link">Privacy Policy</a> <a href="#" className="terms-link">Cookie Policy</a></p>
 
-        <p><a href="#" className="terms-link">Accessibility</a> <a href="#" className="terms-link">Ads info</a> <a href="#" className="terms-link">More</a></p>
-        <p className="twitter-inc">© 2022 Twitter, Inc.</p>
+        <p data-testid="moreTerms"><a href="#" className="terms-link">Accessibility</a> <a href="#" className="terms-link">Ads info</a> <a href="#" className="terms-link">More</a></p>
+        <p data-testid="twitterInc" className="twitter-inc">© 2022 Twitter, Inc.</p>
       </div>
 
     </div>

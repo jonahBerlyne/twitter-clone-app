@@ -44,6 +44,7 @@ export default function Sidebar() {
           name={user?.name}
           photoUrl={user?.photoUrl}
           showFollowBtn={false}
+          testId={1}
           username={user?.username}
         />
       </div>
