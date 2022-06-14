@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { ModeCommentOutlined, Repeat, FavoriteBorderOutlined, DeleteOutlined } from "@mui/icons-material";
 import { doc, deleteDoc } from "firebase/firestore";
 import fireDB, { auth } from "../firebaseConfig";
+import { getAuth } from 'firebase/auth';
 
 interface TweetInterface {
   name: string;
@@ -31,13 +32,13 @@ export default function Tweet({ name, photoUrl, tweet, tweetId, uid, username }:
       <div className="tweet-header">
         <Avatar src={photoUrl} alt={username} />
         <div className="tweet-info">
-          <p className='tweet-info-name'>{name}</p>
-          <p className="tweet-info-username">@{username}</p>
+          <p data-testid={`name-${tweetId}`} className='tweet-info-name'>{name}</p>
+          <p data-testid={`username-${tweetId}`} className="tweet-info-username">@{username}</p>
         </div>
       </div>
 
       <div className="tweet-body">
-        <p>{tweet}</p>
+        <p data-testid={`tweet-${tweetId}`}>{tweet}</p>
       </div>
 
       <div className="tweet-btns">
@@ -50,8 +51,8 @@ export default function Tweet({ name, photoUrl, tweet, tweetId, uid, username }:
         <div className="like-btn">
           <FavoriteBorderOutlined />
         </div>
-        {uid === auth.currentUser?.uid && 
-          <div className="delete-btn" onClick={deleteTweet}>
+        {uid === getAuth().currentUser?.uid && 
+          <div data-testid={`deleteBtn-${tweetId}`} className="delete-btn" onClick={deleteTweet}>
             <DeleteOutlined />
           </div>
         }

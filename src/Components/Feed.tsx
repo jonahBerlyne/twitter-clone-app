@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { Form } from "react-bootstrap";
 import Tweet from "./Tweet";
 import fireDB, { auth } from "../firebaseConfig";
+import { getAuth } from 'firebase/auth';
 import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore"; 
 import { useSelector } from 'react-redux';
 import { selectUser } from "../Redux/userSlice";
@@ -48,7 +49,7 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
         photoUrl,
         timestamp,
         tweet,
-        uid: auth.currentUser?.uid,
+        uid: getAuth().currentUser?.uid,
         username
       };
       setTweet("");
@@ -68,7 +69,7 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
           <Avatar style={{ height: "50px", width: "50px" }} src={photoUrl} alt={username} />
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} cols={50} maxLength={140} size="lg" placeholder="What's happening?" value={tweet} onChange={e => setTweet(e.target.value)} className="feed-input-box" />
+              <Form.Control as="textarea" data-testid="tweetBox" rows={3} cols={50} maxLength={140} size="lg" placeholder="What's happening?" value={tweet} onChange={e => setTweet(e.target.value)} className="feed-input-box" />
             </Form.Group>
             <button type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
           </Form>
