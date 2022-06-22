@@ -12,6 +12,7 @@ import Sidebar from "../Components/Sidebar/Sidebar";
 import Feed from "../Components/Feed";
 import Widgets from '../Components/Widgets';
 import Tweet from '../Components/Tweet';
+import { addDoc, collection, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 
 jest.mock("../firebaseConfig", () => {
   return {
@@ -117,79 +118,76 @@ describe("Feed Component", () => {
   expect(screen.getByTestId("tweetBox")).toHaveValue("example tweet");
  });
 
- let tweetIndex: number = 0;
- let tweets: any[] = [];
+ 
+ it("sends a tweet", async () => {
+  const mockAuth = ({
+   currentUser: {
+       uid: jest.fn().mockReturnValue("abc"),
+   }
+  } as unknown) as Auth;
+  (getAuth as jest.Mock).mockReturnValue(mockAuth);
+  (serverTimestamp as jest.Mock).mockReturnThis();
+  (collection as jest.Mock).mockReturnThis();
+  (addDoc as jest.Mock).mockResolvedValue(this);
 
- it("sends a tweet", () => {
-
-  const TestFeed = () => {
-
-    const [tweet, setTweet] = useState<string>('');
-    const sendTweet = (tweet: string) => {
-      const tweetDoc = {
-        name: 'example',
-        photoUrl: 'example.png',
-        tweet,
-        tweetIndex,
-        uid: "abc",
-        username: 'example'
-      };
-      tweets.push(tweetDoc);
-      tweetIndex++;
-    }
-
-    return (
-      <div>
-         <textarea data-testid="tweetBox" value={tweet} onChange={e => setTweet(e.target.value)} />
-         <button data-testid="tweetBtn" onClick={() => sendTweet(tweet)}></button>
-      </div>
-    );
-  }
-
-  render(<TestFeed />);
-
-  fireEvent.change(screen.getByTestId("tweetBox"), {target: {value: "example tweet 0"}});
-
+  render(
+   <Router>
+    <Feed name="example" photoUrl='example.png' username='example' />
+   </Router>
+  );
+  
+  fireEvent.change(screen.getByTestId("tweetBox"), {target: {value: "example tweet"}});
+  
   fireEvent.click(screen.getByTestId("tweetBtn"));
 
-  expect(tweets).toHaveLength(1);
-
-  fireEvent.change(screen.getByTestId("tweetBox"), {target: {value: "example tweet 1"}});
-
-  fireEvent.click(screen.getByTestId("tweetBtn"));
-
-  expect(tweets).toHaveLength(2);
+  await waitFor(() => {
+    expect(addDoc).toBeCalled();
+  });
+  
  });
 
- it("renders and deletes the tweets", () => {
-
+ 
+ it("renders and deletes the tweets", async () => {
+  const tweets: any[] = [
+     {
+       name: "example",
+       photoUrl: "example.png",
+       tweet: "This is an example tweet.",
+       username: "example",
+       uid: "abc"
+     },
+     {
+       name: "example2",
+       photoUrl: "example2.png",
+       tweet: "This is another example tweet.",
+       username: "example2",
+       uid: "abc2"
+     }
+  ];
+   
   const mockAuth = ({
     currentUser: {
-        uid: jest.fn().mockReturnValue("abc"),
+        uid: "abc"
     }
   } as unknown) as Auth;
   (getAuth as jest.Mock).mockReturnValue(mockAuth);
+  (doc as jest.Mock).mockReturnThis();
+  (deleteDoc as jest.Mock).mockResolvedValue(this);
 
   const Tweets = () => {
-
-    const deleteTweet = (index: number): void => {
-      tweets = tweets.filter(_tweet => _tweet.tweetIndex !== index);
-    }
-
     return (
       <div>
-        {tweets.map((tweet) => {
+        {tweets.map((tweet, index) => {
           return (
-            <div key={tweet.tweetIndex}>
+            <div key={index}>
               <Tweet 
                 name={tweet.name}
                 photoUrl={tweet.photoUrl}
                 tweet={tweet.tweet}
-                tweetId={`${tweet.tweetIndex}`}
+                tweetId={`${index}`}
                 username={tweet.username}
                 uid={tweet.uid}
               />
-              <button data-testid={`deleteBtn-${tweet.tweetIndex}`} onClick={() => deleteTweet(tweet.tweetIndex)}></button>
             </div>
           );
         })}
@@ -197,17 +195,18 @@ describe("Feed Component", () => {
     );
   }
 
-  const { rerender } = render(<Tweets />);
+  render(<Tweets />);
 
-  expect(screen.getByTestId("name-1")).toHaveTextContent("example");
+  expect(screen.getByTestId("name-1")).toHaveTextContent("example2");
   expect(screen.getByTestId("username-0")).toHaveTextContent("@example");
-  expect(screen.getByTestId("tweet-1")).toHaveTextContent("example tweet 1");
+  expect(screen.getByTestId("tweet-1")).toHaveTextContent("This is another example tweet.");
 
   fireEvent.click(screen.getByTestId("deleteBtn-0"));
-  expect(tweets).toHaveLength(1);
 
-  rerender(<Tweets />);
-  expect(screen.queryByTestId("tweet-0")).not.toBeInTheDocument();
+  await waitFor(() => {
+    expect(deleteDoc).toBeCalled();
+  });
+
  });
 });
 

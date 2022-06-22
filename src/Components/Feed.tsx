@@ -71,8 +71,8 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" data-testid="tweetBox" rows={3} cols={50} maxLength={140} size="lg" placeholder="What's happening?" value={tweet} onChange={e => setTweet(e.target.value)} className="feed-input-box" />
             </Form.Group>
-            <button type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
           </Form>
+          <button data-testid="tweetBtn" type="submit" className="btn btn-primary tweet-btn" onClick={sendTweet} disabled={tweet === ""}>Tweet</button>
         </div>
         <div className="feed-border"></div>
       </div>
