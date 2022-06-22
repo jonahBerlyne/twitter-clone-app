@@ -5,7 +5,10 @@ import "@testing-library/jest-dom/extend-expect";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { UserCredential } from "@firebase/auth-types";
+import { doc, setDoc } from "firebase/firestore";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 jest.mock("../firebaseConfig", () => {
   return {
@@ -14,6 +17,10 @@ jest.mock("../firebaseConfig", () => {
 });
 
 jest.mock('firebase/auth');
+
+jest.mock("firebase/firestore");
+
+jest.mock("firebase/storage");
 
 afterEach(done => {
   cleanup();
@@ -50,30 +57,25 @@ describe("Login Page", () => {
  });
 
  it("should login user", async () => {
-  const mockAuth = ({
-   signInWithEmailAndPassword: jest.fn(),
-  } as unknown) as Auth;
-  (getAuth as jest.MockedFunction<typeof getAuth>).mockReturnValue(mockAuth);
+  (signInWithEmailAndPassword as jest.Mock).mockResolvedValue(this);
 
-  const email = "example@example.com";
-  const password = "example";
+  render(
+   <Router>
+    <LoginPage />
+   </Router>
+  );
 
-  const Login = () => {
-    return (
-      <div>
-        <button data-testid="loginBtn" onClick={() => loginUser()}></button>
-      </div>
-    );
-  }
+  const emailInput = screen.getByTestId("Email");
+  const passwordInput = screen.getByTestId("Password");
 
-  const loginUser = async () => await signInWithEmailAndPassword(getAuth(), email, password);
+  fireEvent.change(emailInput, {target: {value: "example@example.com"}});
+  fireEvent.change(passwordInput, {target: {value: "example"}});
 
-  render(<Login />);
+  fireEvent.click(screen.getByTestId("loginBtn"));
 
-  const loginBtn = screen.getByTestId("loginBtn");
-  fireEvent.click(loginBtn);
-
-  expect(getAuth).toBeCalledTimes(1);
+  await waitFor(() => {
+    expect(signInWithEmailAndPassword).toBeCalled();
+  });
  });
 
  it('navigates to register page', async () => {
@@ -177,30 +179,67 @@ describe("Register Page", () => {
  });
 
  it("should register user", async () => {
-  const mockAuth = ({
-   createUserWithEmailAndPassword: jest.fn(),
-  } as unknown) as Auth;
-  (getAuth as jest.MockedFunction<typeof getAuth>).mockReturnValue(mockAuth);
+  const mockCredential = ({
+   user: {
+    uid: "abc"
+   }
+  } as unknown) as UserCredential;
+  (createUserWithEmailAndPassword as jest.Mock).mockResolvedValue(mockCredential);
+  (getStorage as jest.Mock).mockReturnThis();
+  (ref as jest.Mock).mockReturnThis();
+  (uploadBytes as jest.Mock).mockResolvedValue(this);
+  (getDownloadURL as jest.Mock).mockResolvedValue("example.png");
+  (updateProfile as jest.Mock).mockResolvedValue(this);
+  (doc as jest.Mock).mockReturnThis();
+  (setDoc as jest.Mock).mockResolvedValue(this);
 
-  const email = "example@example.com";
-  const password = "example";
+  jest.useFakeTimers();
 
-  const Register = () => {
-    return (
-      <div>
-        <button data-testid="registerBtn" onClick={() => registerUser()}></button>
-      </div>
-    );
-  }
+  render(
+   <Router>
+    <RegisterPage />
+   </Router>
+  );
 
-  const registerUser = async () => await createUserWithEmailAndPassword(getAuth(), email, password);
+  fireEvent.change(screen.getByTestId("Name"), {target: {value: "example"}});
+  fireEvent.change(screen.getByTestId("Email"), {target: {value: "example@example.com"}});
+  fireEvent.change(screen.getByTestId("Password"), {target: {value: "example"}});
+  fireEvent.change(screen.getByTestId("confirmPassword"), {target: {value: "example"}});
 
-  render(<Register />);
+  fireEvent.click(screen.getByTestId("userAndPhotoBtn"));
 
-  const registerBtn = screen.getByTestId("registerBtn");
-  fireEvent.click(registerBtn);
+  fireEvent.change(screen.getByTestId("Username"), {target: {value: "example"}});
 
-  expect(getAuth).toBeCalledTimes(1);
+  const fakeFile = new File(['example'], 'example.png', { type: 'image/png' });
+  const inputFile = screen.getByTestId(/imgInput/i);
+  
+  fireEvent.change(inputFile, {
+   target: { files: [fakeFile] }
+  });
+
+  fireEvent.click(screen.getByTestId("registerBtn"));
+
+  await waitFor(() => {
+    expect(createUserWithEmailAndPassword).toBeCalled();
+  });
+
+  await waitFor(() => {
+    expect(uploadBytes).toBeCalled();
+  });
+
+  await waitFor(() => {
+    expect(getDownloadURL).toBeCalled();
+  });
+
+  await waitFor(() => {
+    expect(updateProfile).toBeCalled();
+  });
+
+  await waitFor(() => {
+    expect(setDoc).toBeCalled();
+  });
+
+  jest.clearAllTimers();
  });
 
  it('navigates to login page', async () => {

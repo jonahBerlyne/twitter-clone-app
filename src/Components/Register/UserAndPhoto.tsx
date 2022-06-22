@@ -69,6 +69,7 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
         </button>
 
         <button
+          data-testid="registerBtn"
           className='btn btn-dark auth-btn'
           type="submit"
           onClick={register}

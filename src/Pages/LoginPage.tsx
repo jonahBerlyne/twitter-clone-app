@@ -34,7 +34,7 @@ export default function LoginPage() {
           <Form.Control type="password" placeholder="Password" data-testid="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
         </FloatingLabel>
       </>
-      <button className='btn btn-dark auth-btn' type="submit" onClick={login} disabled={email === "" || password === ""}>Login</button>
+      <button data-testid="loginBtn" className='btn btn-dark auth-btn' type="submit" onClick={login} disabled={email === "" || password === ""}>Login</button>
       <div className="auth-link-container">
         <p className='account-question'>Don't have an account?</p>
         <Link to="/register" data-testid="register-link" className="auth-link">Sign up</Link>
