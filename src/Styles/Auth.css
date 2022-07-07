@@ -97,3 +97,29 @@ input:focus + label {
  gap: 20px;
  margin-top: 60px;
 }
+
+@media screen and (max-width: 425px) {
+ .auth {
+  margin-top: 30px;
+ }
+
+ .auth-header {
+  font-size: 30px;
+ }
+
+ .auth-input {
+  width: 250px;
+ }
+
+ .username-container {
+  margin-top: 0px;
+ }
+
+ .img-container-header {
+  margin-top: 5px;
+ }
+
+ .register-btns-container {
+  margin-top: 20px;
+ }
+}
