@@ -1,8 +1,6 @@
 .widgets {
  margin-top: 5px;
- margin-left: 15px;
- margin-right: 55px;
- position: relative;
+ padding: 5px 15px 15px 15px;
 }
 
 .search-container {
@@ -22,7 +20,6 @@
  background-color: #ecebeb;
  width: 400px;
  padding: 10px 0px 10px 0px;
- position: sticky;
 }
 
 .search::placeholder {
@@ -80,4 +77,10 @@
 .terms-link:hover {
  color: #000;
  text-decoration: underline;
+}
+
+@media screen and (max-width: 1255px) {
+ .widgets {
+  display: none;
+ }
 }

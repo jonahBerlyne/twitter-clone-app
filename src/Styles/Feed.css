@@ -1,6 +1,4 @@
 .feed {
- flex: 0.6;
- margin-left: 60px;
  width: 100%;
  border-left: 1px solid gray;
  border-right: 1px solid gray;
@@ -13,7 +11,18 @@
 
 .feed-input {
  display: flex;
+ flex-direction: column;
  margin-left: 20px;
+}
+
+.feed-input-left {
+ display: flex;
+}
+
+.feed-input-right {
+ display: flex;
+ justify-content: flex-end;
+ padding-bottom: 15px;
 }
 
 .feed-input-box {
@@ -41,12 +50,10 @@ textarea:focus {
 .tweet-btn {
  border-radius: 18px;
  font-weight: bold;
- padding: 5px 15px 5px 15px;
 }
 
 .feed-input > Form > button {
  margin-left: 520px;
- margin-bottom: 25px;
 }
 
 .feed-border {
