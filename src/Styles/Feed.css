@@ -73,7 +73,7 @@ textarea:focus {
  margin-right: -10px;
 }
 
-@media (min-width: 769px) and (max-width: 1255px) {
+@media (min-width: 769px) and (max-width: 1260px) {
  .feed {
   width: 50%;
  }

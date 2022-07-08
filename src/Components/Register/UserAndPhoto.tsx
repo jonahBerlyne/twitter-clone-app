@@ -34,6 +34,7 @@ export default function UserAndPhoto({ username, setUsername, choosePic, imgFile
               data-testid="Username" className="auth-input" 
               value={username} 
               onChange={e => setUsername(e.target.value)} 
+              maxLength={23}
               required 
             />
 

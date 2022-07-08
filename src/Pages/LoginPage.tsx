@@ -28,10 +28,10 @@ export default function LoginPage() {
       <p className="auth-header">Sign in to Twitter</p>
       <>
         <FloatingLabel controlId="floatingEmailLogin" label="Email" className="mb-3">
-          <Form.Control type="email" placeholder="Email" data-testid="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
+          <Form.Control type="email" placeholder="Email" data-testid="Email" className="auth-input" value={email} onChange={e => setEmail(e.target.value)} maxLength={30} required />
         </FloatingLabel>
         <FloatingLabel controlId="floatingPasswordLogin" label="Password" className="mb-3">
-          <Form.Control type="password" placeholder="Password" data-testid="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
+          <Form.Control type="password" placeholder="Password" data-testid="Password" className="auth-input" value={password} onChange={e => setPassword(e.target.value)} maxLength={25} required />
         </FloatingLabel>
       </>
       <button data-testid="loginBtn" className='btn btn-dark auth-btn' type="submit" onClick={login} disabled={email === "" || password === ""}>Login</button>
