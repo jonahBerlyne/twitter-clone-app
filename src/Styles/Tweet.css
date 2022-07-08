@@ -55,3 +55,13 @@
  color: #ff133a;
  cursor: pointer;
 }
+
+@media screen and (max-width: 425px) {
+ .tweet {
+  border-bottom-width: 100%;
+ }
+
+ .tweet-btns {
+  gap: 20%;
+ }
+}

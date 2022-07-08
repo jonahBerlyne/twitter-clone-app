@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import "../Styles/Feed.css";
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import { Form } from "react-bootstrap";
 import Tweet from "./Tweet";
 import fireDB, { auth } from "../firebaseConfig";
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore"; 
-import { useSelector } from 'react-redux';
-import { selectUser } from "../Redux/userSlice";
-import { store } from "../Redux/store";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from "../Redux/userSlice";
+import { AppDispatch, store } from "../Redux/store";
 import { UserInfo } from "../Pages/HomePage";
+import { ExitToApp } from '@mui/icons-material';
 
 export default function Feed({ name, photoUrl, username }: UserInfo) {
 
@@ -59,10 +60,27 @@ export default function Feed({ name, photoUrl, username }: UserInfo) {
     }
   }
 
+  const dispatch = useDispatch<AppDispatch>();
+
+  const logOut = async (): Promise<any> => {
+    try {
+      await signOut(auth);
+      dispatch(logout());
+    } catch (err) {
+      alert(`Sign out error: ${err}`);
+    }
+  }
+
   return (
     <div className="feed">
 
-      <h2 className='feed-header'>Home</h2>
+      <h2 className='feed-header'>
+        <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
+        <p>Home</p>
+        <IconButton onClick={() => logOut()}>
+          <ExitToApp fontSize="large" />
+        </IconButton>
+      </h2>
 
       <div className="feed-inputContainer">
         <div className="feed-input">

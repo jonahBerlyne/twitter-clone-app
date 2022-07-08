@@ -9,6 +9,18 @@
  margin: 13px 0px 25px 22.5px;
 }
 
+.feed-header > p {
+ font-size: 35px;
+}
+
+.feed-header > img {
+ display: none;
+}
+
+.feed-header > .MuiIconButton-root {
+ display: none;
+}
+
 .feed-input {
  display: flex;
  flex-direction: column;
@@ -59,4 +71,43 @@ textarea:focus {
 .feed-border {
  border-top: 1px solid gray;
  margin-right: -10px;
+}
+
+@media (min-width: 769px) and (max-width: 1255px) {
+ .feed {
+  width: 50%;
+ }
+}
+
+@media (min-width: 769px) and (max-width: 940px) {
+ .feed-input-box {
+  width: 90%;
+ }
+}
+
+@media screen and (max-width: 768px) {
+ .feed {
+  border-left: none;
+  border-right: none;
+ }
+
+ .feed-header > img {
+  display: flex;
+  object-fit: contain;
+  height: 38px;
+ }
+
+ .feed-header > p {
+  display: none;
+ }
+
+ .feed-header > .MuiIconButton-root {
+  display: flex;
+ }
+
+ .feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
 }
