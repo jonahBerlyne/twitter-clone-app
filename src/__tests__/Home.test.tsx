@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { render, screen, cleanup, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import HomePage from "../Pages/HomePage";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from '../Redux/store';
@@ -13,6 +12,7 @@ import Feed from "../Components/Feed";
 import Widgets from '../Components/Widgets';
 import Tweet from '../Components/Tweet';
 import { addDoc, collection, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { act } from 'react-dom/test-utils';
 
 jest.mock("../firebaseConfig", () => {
   return {
@@ -48,10 +48,9 @@ describe("Sidebar Component", () => {
     }
  });
  const setup = () => {
-
   const mockAuth = ({
    currentUser: {
-       uid: jest.fn().mockReturnValue("abc"),
+       uid: "abc",
    }
   } as unknown) as Auth;
   (getAuth as jest.Mock).mockReturnValue(mockAuth);
@@ -94,24 +93,42 @@ describe("Sidebar Component", () => {
 
 describe("Feed Component", () => {
 
- it("renders the feed component", () => {
+ const setup = async () => {
+  const mockAuth = ({
+   currentUser: {
+       uid: "abc",
+   }
+  } as unknown) as Auth;
+  (getAuth as jest.Mock).mockReturnValue(mockAuth);
+  (serverTimestamp as jest.Mock).mockReturnThis();
+  (collection as jest.Mock).mockReturnThis();
+  (addDoc as jest.Mock).mockResolvedValue(this);
 
   const { container } = render(
-   <Router>
-    <Feed name="example" photoUrl='example.png' username='example' />
-   </Router>
+   <Provider store={store}>
+    <Router>
+      <Feed name="example" photoUrl='example.png' username='example' />
+    </Router>
+   </Provider>
   );
 
+  const promise = Promise.resolve();
+  await act(async () => {
+    await promise;
+  });
+
+  return {
+    container
+  };
+ }
+
+ it("renders the feed component", async () => {
+  const { container } = await setup();
   expect(container).toMatchSnapshot();
  });
 
- it("types a tweet", () => {
-
-  render(
-   <Router>
-    <Feed name="example" photoUrl='example.png' username='example' />
-   </Router>
-  );
+ it("types a tweet", async () => {
+  await setup();
 
   fireEvent.change(screen.getByTestId("tweetBox"), {target: {value: "example tweet"}});
 
@@ -120,21 +137,7 @@ describe("Feed Component", () => {
 
  
  it("sends a tweet", async () => {
-  const mockAuth = ({
-   currentUser: {
-       uid: jest.fn().mockReturnValue("abc"),
-   }
-  } as unknown) as Auth;
-  (getAuth as jest.Mock).mockReturnValue(mockAuth);
-  (serverTimestamp as jest.Mock).mockReturnThis();
-  (collection as jest.Mock).mockReturnThis();
-  (addDoc as jest.Mock).mockResolvedValue(this);
-
-  render(
-   <Router>
-    <Feed name="example" photoUrl='example.png' username='example' />
-   </Router>
-  );
+  await setup();
   
   fireEvent.change(screen.getByTestId("tweetBox"), {target: {value: "example tweet"}});
   
