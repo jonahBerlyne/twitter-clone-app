@@ -16,7 +16,7 @@ interface UserAndPhotoForm {
 export default function UserAndPhoto({ username, setUsername, choosePic, imgFile, imgFileErr, imgPreview, showSignUp, register }: UserAndPhotoForm) {
   return (
     <div className="auth">
-      <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter Icon" />
+      <img src="/Images/Twitter/twitterIcon.png" alt="Twitter Icon" />
       <p className="auth-header">Get Started</p>
 
       <>
